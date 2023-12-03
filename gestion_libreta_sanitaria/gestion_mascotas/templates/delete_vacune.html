@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Vacune Deletion
+{% endblock title %}
+
+{% block content %}
+<div class="col-md-6 mx-auto p-2">
+    <h3>¿Estás seguro que deseas eliminar esta vacuna?</h3>
+    <div class="row">
+        <h2>Detalles de la vacuna:</h2>
+        <p>ID: {{ vacune.id }}</p>
+        <p>Nombre: {{ vacune.nombre }}</p>
+        <p>Fecha de Aplicacion: {{ vacune.dia_aplicacion}}</p>
+        <p>Fecha de proxima Aplicacion: {{ vacune.proxima_fecha}}</p>
+    </div>
+    
+    <form method="post" class="form-control">
+        {% csrf_token %}
+        <button type="submit" name="confirmacion" class="btn btn-danger" value="Confirmar eliminación"> Eliminar </button>
+        <a name="cancelar" href="{% url 'vacune_list' pet_id %}" class="btn btn-secondary">Cancelar</a>
+    </form>    
+</div>
+{% endblock content %}
+

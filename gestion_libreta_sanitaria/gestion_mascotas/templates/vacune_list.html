@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Vacunas
+{% endblock title %}
+    
+{% block encabezado %}
+    Las vacunas de {{ pet.name }}
+{% endblock  %}
+
+{% block content %}
+<div class="row">
+    <div class="col">
+        <table class="table table-hover table-striped">
+            <thead>
+                <tr>
+                    <th> Nombre </th>
+                    <th> Fecha de Aplicacion </th>
+                    <th> Fecha de próxima aplicación </th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for vacune in vacunes  %}
+                <tr>
+                    <td> {{vacune.nombre}} </td>
+                    <td> {{vacune.dia_aplicacion}} </td>
+                    <td> {{vacune.proxima_fecha}} </td>
+                    <td>
+                        <a href="{% url 'edit_vacune' vacune.id %}">
+                            <i class="fas fa-pencil-alt"></i> 
+                        </a>
+                        <a href="{% url 'delete_vacune' vacune.id %}">
+                            <i class="fas fa-times"></i>
+                        </a> 
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+<div class="row">
+    <div class="col">
+        <div class="btn-group" role="group" aria-label="Botones">
+            <a class="btn btn-primary" href="{% url 'add_vacune' pet.id %}"> <i class="fas fa-plus"></i></a>
+            <a class="btn btn-secondary" href="{% url 'select_pets'%}"> <i class="fas fa-arrow-left"></i> </a>
+        </div>
+    </div>
+</div>
+{% endblock content %}
+  

@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block title %}
+    New Pet
+{% endblock title %}
+
+{% block encabezado %}
+    <h3> Ingrese los datos de la nueva mascota: </h3>
+{% endblock encabezado %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-6 justify">
+        <form method="POST" action="{% url 'new_pet' %}" class="form-control">
+            <div class="form-group mr-0">
+                {% csrf_token %}
+                <label for="name">Nombre:</label>
+                <input type="text" id="name" name="name" required><br><br>
+            </div>
+            <div class="form-group mr-0">
+                <label for="specie">Especie:</label>
+                <input type="text" id="specie" name="specie" required><br><br>
+            </div>
+            <div class="form-group mr-0">
+                <label for="birth_date">Fecha de Nacimiento:</label>
+                <input type="date" id="birth_date" name="birth_date" required><br><br>
+            </div>          
+            <div class="form-group mr-0">
+                <label for="breed">Raza:</label>
+                <input type="text" id="breed" name="breed" required><br><br>
+            </div>
+            <div class="form-group mr-0">
+                <label for="color">Color:</label>
+                <input type="text" id="color" name="color" required><br><br>
+            </div>
+                <button class="btn btn-success" type="submit" value="Guardar"> Save Pet! </button>
+                <button class="btn btn-danger" onclick="window.location.href='{% url 'home' %}'"> Cancel </button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock content %}

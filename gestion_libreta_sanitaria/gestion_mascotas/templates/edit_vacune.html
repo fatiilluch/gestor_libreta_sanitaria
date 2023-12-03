@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block encabezado %}
+Edita aqui la información de la vacuna {{vacuna.nombre}}
+{% endblock  %}
+
+{% block content %}
+<div class="mt-4">
+    <h1> Editar Vacuna </h1>
+    <form method="post" class="form-control">
+        {% csrf_token %}  
+        <div class="form-group mb-2">
+            <label for="id_nombre">Nombre:
+                {{ form.nombre }}
+            </label>
+        </div>
+        <div class="form-group mb-2">
+            <label for="id_dia_aplicacion">Fecha de Aplicación:
+                {{ form.dia_aplicacion }}
+            </label>
+        </div>
+        <div class="form-group mb-2">
+            <label for="id_proxima_fecha">Fecha de Proxima Aplicación: 
+                {{ form.proxima_fecha }}
+            </label>
+        </div>
+        <button type="submit" class="btn btn-primary">Guardar</button> 
+        <a name="cancelar" href="{% url 'vacune_list' pet_id %}" class="btn btn-secondary">Cancelar</a>
+    </form>
+</div>
+{% endblock content %}
+

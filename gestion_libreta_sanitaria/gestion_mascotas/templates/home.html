@@ -1,0 +1,20 @@
+<!-- En gestion_mascotas/templates/home.html -->
+{% extends "base.html" %}
+{% block title %}
+    Gestión de Mascotas
+{% endblock %}
+
+{% block encabezado %}
+    <h3>Bienvenido a la Gestión de Mascotas</h3>
+{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <p>¡Administra las vacunas y desparasitaciones de tus mascotas de manera sencilla!</p>
+    </div>
+    <!-- Puedes agregar más contenido aquí -->
+    <div class="d-grid gap-2 col-6 mx-auto">
+        <button class="btn btn-primary" onclick="window.location.href='{% url 'new_pet' %}'">Cargar Nueva Mascota</button>
+        <button class="btn btn-secondary" onclick="window.location.href='{% url 'select_pets' %}'">Seleccionar Mascotas</button>
+    </div>
+{% endblock %}

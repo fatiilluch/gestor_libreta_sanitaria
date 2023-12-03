@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Nueva vacuna
+{% endblock  %}
+
+{% block encabezado %}
+    Agregue las vacunas de su peludito <3
+{% endblock  %}
+
+{% block content %}
+<form class="col-md-6" action="{% url 'add_vacune' pet.id %}" method="post">
+    {% csrf_token %}
+    <!-- Campo oculto para enviar el id del animal -->
+    <input type="hidden" name="pet_id" value="{{ pet.id }}">
+    <!-- Otros campos del formulario para la vacuna -->
+    <div class="mb-3">
+        <label for="nombre" class="form-label"> Ingrese el nombre de la vacuna </label>
+        <input type="text" class="form-control" id="nombre" name="nombre">
+    </div>
+    <div class="mb-3">
+        <label for="dia_aplicacion" class="form-label"> Elija la fecha de la aplicación </label>
+        <input type="date" id="dia_aplicacion" name="dia_aplicacion" class="form-control">
+    </div>
+    <div class="mb-3">
+        <label for="proxima_fecha" class="form-label"> Elija la fecha de la próxima aplicación </label>
+        <input type="date" id="proxima_fecha" name="proxima_fecha" class="form-control">        
+    </div>
+    <button type="submit" class="btn btn-success" value="Agregar Vacuna"> Agregar Vacuna </button>
+    <a class="btn btn-danger" href="{% url 'select_pets'%}"> Cancelar </a>
+</form>
+{% endblock %}
